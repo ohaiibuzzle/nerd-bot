@@ -1,3 +1,5 @@
 data.json
 
 accounts.json
+
+./__pycache__
