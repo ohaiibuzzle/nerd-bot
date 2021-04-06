@@ -196,7 +196,12 @@ Account Creation
 
 @client.command( name = "createac")
 async def createac(context):
-    await accountActions.accountCheck(str(context.author), context)
+    await accountActions.accountCheck(accountActions, str(context.author), context)
+
+
+@client.command(name = "deleteac")
+async def deleteac(context):
+    await accountActions.deleteAccount(str(context.author), context)
 
     
 client.run(str(TOKEN))
