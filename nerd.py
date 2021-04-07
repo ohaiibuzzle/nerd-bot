@@ -6,7 +6,7 @@ import json
 import giphy_client
 from giphy_client.rest import ApiException
 from acmanager import accountActions
-from point.py import points
+from point import points
 
 
 file = open('data.json', 'r')
@@ -206,7 +206,7 @@ async def deleteac(context):
 
 @client.command(name = "myscore")
 async def myscore(context):
-    await points.pointsCount(context.author, context)
+    await points.pointsCount(str(context.author), context)
 
     
 client.run(str(TOKEN))
