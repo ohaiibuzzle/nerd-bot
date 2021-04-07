@@ -14,7 +14,7 @@ class points:
             else:
                 await context.send("Oops seems like you don't have an account")
     
-    async def pointAdd(point, name, context):
+    async def pointAdd(point, name):
         with open('accounts.json') as file:
             json_data = json.load(file)
             person_folder = json_data[name]

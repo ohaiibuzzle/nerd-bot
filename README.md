@@ -10,6 +10,10 @@ A fun and friendly discord bot coded by me [amazinglySK](www.github.com/amzingly
 - [x] Making a commands which returns a gif
 - [x] Making some few message based games
 - [x] Making an account system for the users (Where their points and game related stuff will be stored)
-- [ ] Making a point system
+- [x] Making a point system
 - [ ] Thinking of more creative ideas
 - [ ] Coding it out !!
+
+## Working on
+
+Fixing the random-reaction command.

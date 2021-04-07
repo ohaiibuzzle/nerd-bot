@@ -98,18 +98,7 @@ async def rando(context, *args):
 '''
 RANDOM REACTION
 '''
-@client.command(name="reaction")
-async def reaction(context):
-    reactions = ['👉🏻', '👌', '✌', '🤣', '👀', '😒', '👍', '❤', '🙌', '🎂', '🎉', '🙏🏻', '😎', '😡', '😢', '😰']
-    global random_reaction
-    random_reaction = random.choice(reactions)
-    await context.send(f"Give me this reaction {random_reaction}")
-    @client.event
-    async def on_reaction_add(reaction, user):
-        if str(reaction) == str(random_reaction):
-            await context.send(f'{context.author.mention} You are amazing in memorizing. Keep it up buddy')
-        else:
-            await context.send(f'Oops {context.author.mention}! You made a mistake. Please try again later.')
+
 
 '''
 DM MESSAGE GAME
