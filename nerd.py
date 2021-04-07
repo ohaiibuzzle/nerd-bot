@@ -30,7 +30,7 @@ client = commands.Bot(command_prefix="!!")
 
 @client.event
 async def on_ready():
-    general_channel = client.get_channel(825307555088957450)
+    general_channel = client.get_channel(829222748525297686)
     await general_channel.send("Hello there!!")
     await client.change_presence(status=discord.Status.online, activity=discord.Game('Nerdbot'))
 

@@ -13,4 +13,16 @@ class points:
                 await context.send(embed = pointsEmbed)
             else:
                 await context.send("Oops seems like you don't have an account")
+    
+    async def pointAdd(point, name, context):
+        with open('accounts.json') as file:
+            json_data = json.load(file)
+            person_folder = json_data[name]
+            score = json_data[name]["points"]
+            score += point
+            person_folder.update({'points' : score})
+            with open('accounts.json', 'w') as fileEdit:
+                json.dump(json_data, fileEdit, indent=4)
+                print("Points were added")
+
         
