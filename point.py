@@ -14,15 +14,18 @@ class points:
             else:
                 await context.send("Oops seems like you don't have an account")
     
-    async def pointAdd(point, name):
+    async def pointAdd(point, name, ctx):
         with open('accounts.json') as file:
             json_data = json.load(file)
-            person_folder = json_data[name]
-            score = json_data[name]["points"]
-            score += point
-            person_folder.update({'points' : score})
-            with open('accounts.json', 'w') as fileEdit:
-                json.dump(json_data, fileEdit, indent=4)
-                print("Points were added")
+            if name in json_data:
+                person_folder = json_data[name]
+                score = json_data[name]["points"]
+                score += point
+                person_folder.update({'points' : score})
+                with open('accounts.json', 'w') as fileEdit:
+                    json.dump(json_data, fileEdit, indent=4)
+                    print("Points were added")
+            else:
+                await ctx.send("You don't have an account.. Create one first. Use `!!createac`")
 
         

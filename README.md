@@ -16,4 +16,6 @@ A fun and friendly discord bot coded by me [amazinglySK](www.github.com/amzingly
 
 ## Working on
 
-Fixing the random-reaction command.
+- [x] Fixing the random-reaction command.
+- [x] Fixing the reverse string commands.
+- [ ] Thinking of new ideas

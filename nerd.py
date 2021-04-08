@@ -30,7 +30,7 @@ client = commands.Bot(command_prefix="!!")
 
 @client.event
 async def on_ready():
-    general_channel = client.get_channel(829222748525297686)
+    general_channel = client.get_channel(829681046592815155)
     await general_channel.send("Hello there!!")
     await client.change_presence(status=discord.Status.online, activity=discord.Game('Nerdbot'))
 
@@ -98,7 +98,20 @@ async def rando(context, *args):
 '''
 RANDOM REACTION
 '''
-
+@client.command(name = "reaction")
+async def reaction(context):
+    reaction_list = ['👉🏻', '👌', '✌', '🤣', '👀', '😒', '👍', '❤', '🙌', '🎂', '🎉', '🙏🏻', '😎', '😡', '😢', '😰']
+    challenge_reaction = random.choice(reaction_list)
+    await context.send(f"Give me this reaction {context.author.mention}: {challenge_reaction}")
+    def checkReact(r, u):
+        return u == context.author
+    
+    reaction, user = await client.wait_for("reaction_add", check=checkReact)
+    if str(reaction.emoji) == challenge_reaction:
+        await context.send(f"Correct answer {user.mention}.")
+        await points.pointAdd(20, str(user), context)
+    else:
+        await context.send(f"Wrong answer {user.mention}")
 
 '''
 DM MESSAGE GAME
@@ -135,15 +148,14 @@ text_list = ["avatar", "hello", "alliteration", "randomness", "jacob", "wow"]
 async def word(context):
     text = random.choice(text_list)
     await context.send(f"Hello {context.author.mention}!! Type this word backwards now!! `{text}`.")
-
-    async def check(m):
-        if m.content == text[::-1]:
-            await context.send('Correct answer {.author.mention}!'.format(msg))
-        else:
-            await context.send('Oops {.author.mention}!'.format(msg))
-
-
+    def check(m):
+        return m.author == context.author and m.channel == context.channel
     msg = await client.wait_for('message', check=check)
+    if str(msg.content) == text[::-1]:
+        await context.send(f"Correct answer {msg.author.mention} ")
+    else:
+        await context.send(f"Wrong Answer {msg.author.mention}")
+    
     
 '''
 SENDING WHAT THE DEV IS WORKING ON
@@ -160,7 +172,8 @@ WEBSITE LINK
 @client.command(name = "website")
 async def website(context):
     website = 'https://amazinglysk.github.io/nerd-bot-website/'
-    await context.send(f"Check out our latest news and info at this website: {link}")
+    await context.send(f"Check out our latest news and info at this website: {website}")
+
 
 @client.command(name = "gif")
 async def gif(context, *, q = "Smile"):
