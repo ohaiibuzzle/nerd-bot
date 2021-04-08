@@ -19,3 +19,21 @@ A fun and friendly discord bot coded by me [amazinglySK](www.github.com/amzingly
 - [x] Fixing the random-reaction command.
 - [x] Fixing the reverse string commands.
 - [ ] Thinking of new ideas
+
+  - [ ] Making a role player where the user will get a task according to their role
+
+    - [ ] Timeout required (Research required)
+    - [ ] Points Add required
+    - [ ] Extra field in the json file
+    - [ ] Coding all these out
+
+  - [ ] Making some new power-ups
+
+    - [ ] Thinking of the powerups
+    - [ ] Adding them into the json file
+    - [ ] Attaching advantages of each power up
+
+  - [ ] Making some trading/sellable items
+    - [ ] Thinking of some sellable items
+    - [ ] Adding them into the json file
+    - [ ] Fixing their value
