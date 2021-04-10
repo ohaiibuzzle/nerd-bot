@@ -1,3 +1,5 @@
+# Importing Files
+
 import discord
 from discord.ext import commands
 import random
@@ -210,5 +212,11 @@ async def deleteac(context):
 async def myscore(context):
     await points.pointsCount(str(context.author), context)
 
+@client.command(name = "polynomial")
+async def polynomial(context, alpha, beta):
+    user_sum = int(alpha) + int(beta)
+    product = int(alpha) * int(beta)
+    poly = f"x^2 - ({user_sum}) + ({product})"
+    await context.send(f'Your required polynomials is: `{poly}`')
     
 client.run(str(TOKEN))
