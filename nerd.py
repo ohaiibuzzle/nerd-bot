@@ -137,7 +137,7 @@ async def avatar(context):
     a_link =  context.author.avatar_url
     e = discord.Embed()
     e.set_image(url = a_link)
-    await context.send(f"Hello {context.author.mention}!! Heres your avatar \n", embed = e)
+    await context.reply(f"Hello {context.author.mention}!! Heres your avatar \n", embed = e)
     print(str(context.author))
 
 
@@ -154,9 +154,9 @@ async def word(context):
         return m.author == context.author and m.channel == context.channel
     msg = await client.wait_for('message', check=check)
     if str(msg.content) == text[::-1]:
-        await context.send(f"Correct answer {msg.author.mention} ")
+        await context.reply(f"Correct answer {msg.author.mention} ")
     else:
-        await context.send(f"Wrong Answer {msg.author.mention}")
+        await context.reply(f"Wrong Answer {msg.author.mention}")
     
     
 '''
@@ -174,7 +174,7 @@ WEBSITE LINK
 @client.command(name = "website")
 async def website(context):
     website = 'https://amazinglysk.github.io/nerd-bot-website/'
-    await context.send(f"Check out our latest news and info at this website: {website}")
+    await context.reply(f"Check out our latest news and info at this website: {website}")
 
 
 @client.command(name = "gif")
@@ -190,7 +190,7 @@ async def gif(context, *, q = "Smile"):
         gif_embed.set_image(url = f"https://media.giphy.com/media/{giff.id}/giphy.gif")
         gif_embed.set_author(name = context.author.mention)
 
-        await context.send(embed = gif_embed)
+        await context.reply(embed = gif_embed)
     
     except ApiException as e:
         print("Something went wrong.")
@@ -217,6 +217,6 @@ async def polynomial(context, alpha, beta):
     user_sum = int(alpha) + int(beta)
     product = int(alpha) * int(beta)
     poly = f"x^2 - ({user_sum}) + ({product})"
-    await context.send(f'Your required polynomials is: `{poly}`')
+    await context.reply(poly)
     
 client.run(str(TOKEN))

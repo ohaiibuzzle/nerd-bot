@@ -3,3 +3,5 @@ data.json
 accounts.json
 
 rando.py
+
+/__pycache__
