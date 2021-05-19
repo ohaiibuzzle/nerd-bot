@@ -1,6 +1,4 @@
-<p>
-    <img src = "https://cdn.discordapp.com/app-icons/818167692929663038/f648f297606ae47db263f3bad2b02bfe.png?size=256"/>
-</p>
+![](https://cdn.discordapp.com/app-icons/818167692929663038/f648f297606ae47db263f3bad2b02bfe.png?size=256)
 
 # NERDBOT 🤖
 
