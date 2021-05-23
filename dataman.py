@@ -96,7 +96,7 @@ class powers:
                     power_embed.set_author(name="Nerd-Bot")
                     for item in sorted(set(powers)):
                         count = powers.count(item)
-                        power_embed.add_field(name = item, value = str(count))
+                        power_embed.add_field(name = item, value = str(count), inline = False)
                     await context.reply(embed = power_embed)
         else:
             await context.send("First create an account using the `!createac` command")
