@@ -144,4 +144,7 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# virtualenv (somehow still in here)
+bin/
+
 # End of https://www.toptal.com/developers/gitignore/api/python
