@@ -59,7 +59,8 @@ class MiscCommands(commands.Cog):
     '''
     @commands.command(name = "avatar")
     async def avatar(self, ctx):
-        await Embeds.avatarEmbed(ctx)
+        async with ctx.channel.typing():
+            await Embeds.avatarEmbed(ctx)
         
     '''
     SENDING WHAT THE DEV IS WORKING ON
@@ -67,8 +68,9 @@ class MiscCommands(commands.Cog):
 
     @commands.command(name = "workingon")
     async def workingon(self, ctx):
-        link = 'https://github.com/amazinglySK/amazinglySK#working-on'
-        await ctx.send(f"Check out what our dev is working on in this github page ⌨: \n {link} ")
+        async with ctx.channel.typing():
+            link = 'https://github.com/amazinglySK/amazinglySK#working-on'
+            await ctx.send(f"Check out what our dev is working on in this github page ⌨: \n {link} ")
 
     '''
     GIF command
@@ -76,21 +78,22 @@ class MiscCommands(commands.Cog):
 
     @commands.command(name = "gif")
     async def gif(self, ctx, *, q = "Smile"):
-        api_instance = giphy_client.DefaultApi()
+        async with ctx.channel.typing():
+            api_instance = giphy_client.DefaultApi()
 
-        try:
-            api_response = api_instance.gifs_search_get(self.giphy_api_key, q, limit = 5, rating = 'g')
-            lst = list(api_response.data)
-            giff = random.choice(lst)
+            try:
+                api_response = api_instance.gifs_search_get(self.giphy_api_key, q, limit = 5, rating = 'g')
+                lst = list(api_response.data)
+                giff = random.choice(lst)
 
-            gif_embed = discord.Embed(title = q)
-            gif_embed.set_image(url = f"https://media.giphy.com/media/{giff.id}/giphy.gif")
-            gif_embed.set_author(name = str(ctx.author))
+                gif_embed = discord.Embed(title = q)
+                gif_embed.set_image(url = f"https://media.giphy.com/media/{giff.id}/giphy.gif")
+                gif_embed.set_author(name = str(ctx.author))
 
-            await ctx.reply(embed = gif_embed)
-        
-        except giphy_client.rest.ApiException as e:
-            print("Something went wrong.")
+                await ctx.reply(embed = gif_embed)
+            
+            except giphy_client.rest.ApiException as e:
+                print("Something went wrong.")
 
     '''
     Account Creation
@@ -99,7 +102,8 @@ class MiscCommands(commands.Cog):
     @commands.command(name = "createac")
     async def createac(self, ctx):
         Actions_account = accountActions()
-        await Actions_account.accountCheck(str(ctx.author), ctx)
+        async with ctx.channel.typing():
+            await Actions_account.accountCheck(str(ctx.author), ctx)
 
     '''
     Account deletion
@@ -107,13 +111,15 @@ class MiscCommands(commands.Cog):
 
     @commands.command(name = "deleteac")
     async def deleteac(self, ctx):
-        await accountActions.deleteAccount(str(ctx.author), ctx)
+        async with ctx.channel.typing():
+            await accountActions.deleteAccount(str(ctx.author), ctx)
     '''
     Gives the score as an embed
     '''
     @commands.command(name = "myscore")
     async def myscore(self, ctx):
-        await points.pointsCount(str(ctx.author), ctx)
+        async with ctx.channel.typing():
+            await points.pointsCount(str(ctx.author), ctx)
 
 def setup(client):
     client.add_cog(MiscCommands(client))
