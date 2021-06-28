@@ -147,4 +147,7 @@ cython_debug/
 # virtualenv (somehow still in here)
 bin/
 
+# youtube-dl
+share/
+
 # End of https://www.toptal.com/developers/gitignore/api/python
