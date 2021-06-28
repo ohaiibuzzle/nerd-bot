@@ -7,6 +7,7 @@ from discord.ext import commands
 import time
 
 class Embeds:
+    @staticmethod
     async def helpEmbed(ctx):
         commands_embed = discord.Embed(title="Commands", description="Try out these possible commands", color = 0xffa00f)
         commands_embed.add_field(name="Command prefix: ", value="`!` (Don't forget to include this before all your commands)", inline = False)
@@ -36,12 +37,14 @@ class Embeds:
             owner_commands.add_field(name = "To set a channel as the welcome channel", value = "`!setwelcome`", inline = False)
             await ctx.author.send(embed = owner_commands)
         
+    @staticmethod
     async def avatarEmbed(ctx):
         a_link =  ctx.author.avatar_url
         e = discord.Embed(title = f"{str(ctx.author)}'s profile picture", colour = 0x00FF00)
         e.set_image(url = a_link)
         await ctx.reply(f"Hello {ctx.author.mention}! Heres your avatar \n", embed = e)
     
+    @staticmethod
     async def shopEmbed(ctx):
         shop_embed = discord.Embed(title = "Nerd Shop", colour = 0xF0FFF0)
         shop_embed.add_field(name = ":pizza: *Pizza*", value = "1200 :coin:", inline=False)
@@ -54,6 +57,7 @@ class Embeds:
         shop_embed.add_field(name = "Radium :package:", value = "3000 :coin:", inline=False)
         await ctx.reply(embed = shop_embed)
     
+    @staticmethod
     async def itemEmbed(ctx, name, icon,function, cost):
         item_embed = discord.Embed(title = name, colour = 0xF0FFF0)
         item_embed.add_field(name = "Name:", value = name, inline = False)
@@ -64,6 +68,7 @@ class Embeds:
         item_embed.set_footer(text = "For more in depth info about each of the items in the shop ---> `!item <item name>`")
         await ctx.reply(embed = item_embed)
 
+    @staticmethod
     async def kickEmbed(ctx, name, author):
         t = time.localtime()
         ban_embed = discord.Embed(title = f"{name} is kicked now by {author}", color = 0xFF0000)
@@ -72,6 +77,7 @@ class Embeds:
         ban_embed.add_field(name = "Initiator", value = author)
         await ctx.send(embed = ban_embed)
     
+    @staticmethod
     async def banEmbed(ctx, name, author):
         t = time.localtime()
         ban_embed = discord.Embed(title = f"{name} is banned now by {author}", colour = 0xFF0000)
@@ -80,6 +86,7 @@ class Embeds:
         ban_embed.add_field(name = "Initiator", value = author)
         await ctx.send(embed = ban_embed)
 
+    @staticmethod
     async def unBanEmbed(ctx, name, author):
         t = time.localtime()
         ban_embed = discord.Embed(title = f"{name} is unbanned now by {author}", color = 0xFFFFFF)
@@ -88,12 +95,14 @@ class Embeds:
         ban_embed.add_field(name = "Initiator", value = author)
         await ctx.send(embed = ban_embed)
 
+    @staticmethod
     async def errorEmbed(ctx, error_name, error):
         error_embed = discord.Embed(title = ":x: Error", color = 0xff0000)
         error_embed.add_field(name = "Error name:", value = error_name, inline=False)
         error_embed.add_field(name = "Error message", value = error)
         await ctx.reply(embed = error_embed)
     
+    @staticmethod
     async def purchaseSuccess(ctx, power, cost):
         t = time.localtime()
         success_msg = discord.Embed(title = ":ok: Purchase summary", color = 0x00FF00)
@@ -102,6 +111,7 @@ class Embeds:
         success_msg.add_field(name = "Time: ", value = time.strftime("%H:%M:%S", t))
         await ctx.reply(embed = success_msg)
     
+    @staticmethod
     async def infoEmbed(ctx):
         info_embed = discord.Embed(title = "NERDBOT", description = "Some useful information about nerdbot", colour = 0xF0FFF0)
         info_embed.add_field(name = "Version : ", value = ":sparkles: v1.0.0 :sparkles:", inline = False)

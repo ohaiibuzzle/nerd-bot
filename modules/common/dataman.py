@@ -2,10 +2,11 @@ import json
 import discord
 from discord.embeds import Embed
 from discord.ext import commands
-from embeds import Embeds
+from .embeds import Embeds
 import random
 
 class accountActions:
+    @staticmethod
     def accountBoolean(name):
         with open('./data/accounts.json') as mainFile:
             file = json.load(mainFile)
@@ -31,6 +32,7 @@ class accountActions:
                 json.dump(file, fileEdit, indent=4)
                 await context.send("Your account was created")
 
+    @staticmethod
     async def deleteAccount(name, context):
         with open('./data/accounts.json') as mainFile:
                 file = json.load(mainFile)
@@ -45,6 +47,7 @@ class accountActions:
                     await context.send("You don't have an account.. Why are you thinking of deleting it. Its like any number / 0")
 
 class points:
+    @staticmethod
     async def pointsCount(name, context):
         with open('./data/accounts.json') as json_file:
             data = json.load(json_file)
@@ -56,6 +59,7 @@ class points:
             else:
                 await context.send("Oops seems like you don't have an account")
     
+    @staticmethod
     async def pointAdd(point, name, ctx):
         if accountActions.accountBoolean(name) == True:
             with open('./data/accounts.json') as file:
@@ -70,6 +74,7 @@ class points:
         else:
             await ctx.send("**Note : You don't have an account. Therefore the points are not being saved. Create one using this command :  **`!!createac`")
         
+    @staticmethod
     async def pointDeduct(point, name):
         if accountActions.accountBoolean(name) == True:
             with open('./data/accounts.json') as file:
@@ -84,6 +89,7 @@ class points:
             print("Account Faliure")
 
 class powers:
+    @staticmethod
     async def showPowerUps(name, context):
         if accountActions.accountBoolean(name) == True:
             with open('./data/accounts.json') as mainFile:
@@ -101,6 +107,7 @@ class powers:
         else:
             await context.send("First create an account using the `!createac` command")
 
+    @staticmethod
     async def addPowerUps(context, power, name, cost):
         if accountActions.accountBoolean(name) == True:
             with open("./data/accounts.json") as mainFile:
@@ -115,6 +122,7 @@ class powers:
         else:
             await context.send("First create an account.. Then only will I be able to add something into your account")  
 
+    @staticmethod
     async def checkPowerUp(power, name):
         if accountActions.accountBoolean(name) == True:
             with open("./data/accounts.json") as ourFile:
@@ -124,11 +132,13 @@ class powers:
                     return True
                 else:
                     return False
+    @staticmethod
     def rainCoin():
         points = random.randint(100, 200)
         return points
 
 class servers:
+    @staticmethod
     def addServer(name, id):
         with open("./data/servers.json") as mainFile:
             file = json.load(mainFile)
@@ -136,6 +146,8 @@ class servers:
             file.update(new_server)
             with open("./data/servers.json", 'w') as fileToEdit:
                 json.dump(file, fileToEdit, indent=4)
+                
+    @staticmethod
     def addWelcome(guild_name,channel_id):
         with open("./data/servers.json") as mainFile:
                 file = json.load(mainFile)
@@ -145,6 +157,7 @@ class servers:
                 guild_folder.update({"welcome_channel" : welcome_channel})
                 with open("./data/servers.json", 'w') as fileToEdit:
                     json.dump(file, fileToEdit, indent=4)
+    @staticmethod
     def getWelcome(guild_name):
         with open("./data/servers.json") as mainFile:
             file = json.load(mainFile)
@@ -152,10 +165,11 @@ class servers:
             return (int(welcome_channel))    
 
 class Shop:
-    global Items
     Items = ["Pizza", "Richey Rich", "Rain of Coins", "Nerdy", "Normie", "Obsidion", "Arsenicum", "Radium"]
+    
+    @staticmethod
     async def shopItem(ctx, name):
-        if name in Items:
+        if name in Shop.Items:
             with open("./data/shop.json") as readFile:
                 shopItems = json.load(readFile)
                 for item in shopItems["shopItems"]:
@@ -164,8 +178,9 @@ class Shop:
         else:
             await ctx.reply("Oops. Seems like there's no such item in our shop. Please check available items for sale using the `!shop` command")
     
+    @staticmethod
     async def purchase(ctx, name):
-        if name in Items:
+        if name in Shop.Items:
             with open("./data/shop.json") as readFile:
                 shopItems = json.load(readFile)
                 for item in  shopItems["shopItems"]:

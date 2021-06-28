@@ -1,9 +1,10 @@
 import discord
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
-from embeds import Embeds
+from .embeds import Embeds
 
 class Errors:
+    @staticmethod
     async def checkErrors(ctx, error):
         if isinstance(error, commands.CommandOnCooldown):
             if round(error.retry_after) < 60:
