@@ -88,7 +88,7 @@ class RandomCommands(commands.Cog):
             msg = await self.client.wait_for('message', check=check)
             if str(msg.content) == text[::-1]:
                 await ctx.reply(f"Correct answer {msg.author.mention} ")
-                if powers.checkPowerUp("Rain of Coins", str(ctx.author)):
+                if await powers.checkPowerUp("Rain of Coins", str(ctx.author)):
                     await points.pointAdd(powers.rainCoin(), str(msg.author), ctx)
                 else:
                     await points.pointAdd(20, str(msg.author), ctx)
