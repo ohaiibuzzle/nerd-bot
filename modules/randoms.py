@@ -1,7 +1,7 @@
 from discord.ext import commands
 import random
 import asyncio
-from common.dataman import powers, points
+from .common.dataman import powers, points
 
 class RandomCommands(commands.Cog):
     rand_sent = ['There is no wind in the football.', 'Why Haircut not cut..?', "Don't stand in front of my back"]

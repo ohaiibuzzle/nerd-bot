@@ -1,6 +1,6 @@
 from discord.ext import commands
-from common.embeds import Embeds
-from common.dataman import Shop, powers
+from .common.embeds import Embeds
+from .common.dataman import Shop, powers
 
 class ShopCommands(commands.Cog):
     def __init__(self, client):
@@ -24,4 +24,4 @@ class ShopCommands(commands.Cog):
         await powers.showPowerUps(str(ctx.author), ctx)
     
 def setup(client):
-    client.add_cog(Shop(client))
+    client.add_cog(ShopCommands(client))

@@ -1,6 +1,6 @@
 from discord.ext import commands
-from common.dataman import servers
-from common.errors import Errors
+from .common.dataman import servers
+from .common.errors import Errors
 import discord
 
 
@@ -14,7 +14,7 @@ class EventListeners(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        general_channel = self.client.get_channel(844929006339620935)
+        general_channel = self.client.get_channel(858918424125767693)
         await general_channel.send("Hello there!")
         await self.client.change_presence(status=discord.Status.online, activity=discord.Game('Nerdbot'))
 

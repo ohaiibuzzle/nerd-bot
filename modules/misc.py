@@ -1,7 +1,7 @@
 from discord.ext import commands
-from common.dataman import servers
-from common.embeds import Embeds
-from common.dataman import accountActions, points
+from .common.dataman import servers
+from .common.embeds import Embeds
+from .common.dataman import accountActions, points
 import giphy_client
 import random
 import discord
@@ -114,3 +114,6 @@ class MiscCommands(commands.Cog):
     @commands.command(name = "myscore")
     async def myscore(self, ctx):
         await points.pointsCount(str(ctx.author), ctx)
+
+def setup(client):
+    client.add_cog(MiscCommands(client))

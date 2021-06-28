@@ -1,5 +1,5 @@
 from discord.ext import commands
-from common.embeds import Embeds
+from .common.embeds import Embeds
 
 import discord
 

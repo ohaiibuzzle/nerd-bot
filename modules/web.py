@@ -38,3 +38,6 @@ class WebCommands(commands.Cog):
                 meaning.append(i.get_text().strip())
             info = "\n".join(meaning[0:2])
             await ctx.send(f"{content.text.strip()} \nSome information: \n {info} \n For more info go here {mw_url}")
+            
+def setup(client):
+    client.add_cog(WebCommands(client))
